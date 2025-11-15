@@ -5,6 +5,7 @@ from google.adk.agents import Agent
 from google.adk.tools import google_search
 
 """
+                                            Theme : EduTech
                     TeacherAgent - Analyze marksheet, taking action on Weak Subjects and planning quizes for you on behalf of your weak subject
 """
 
@@ -16,7 +17,13 @@ from google.adk.tools import google_search
 report_analyze_agent=Agent(
     name = 'ReportAnalyzeAgent',
     model='gemini-2.5-flash',
-    instruction="""You are a specilized report analyze agent. Your only job to use the google_search tool to determine weak_subject and strong_subject given by student and also if user providing you result in pdf or image format then apply same process of extracting weak_subject and strong_subject  """,
+    instruction="""You are a specilized report analyze agent. Your only job to use the google_search tool to determine weak_subject and strong_subject given by student and also if user providing you result in pdf or image format then apply same process of extracting weak_subject and strong_subject 
+
+    Returns :
+     Consider weak subjects between range 0 to 45 and strong subject 50 above 
+     if no subjects found weak then say you are good in every subject  
+    """,
+
     tools = [google_search],
     output_key="report_analyze_finding",
 )
